@@ -2,9 +2,9 @@ name: Maven CI
 
 on:
   push:
-    branches: [ Development ]
+    branches: [ main ]
   pull_request:
-    branches: [ Development ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -25,7 +25,7 @@ jobs:
       run: mvn test
     - name: Package with maven
       run: mvn package
-    - run: mkdir staging && cp target/*.jar artifact
+    - run: mkdir artifact && cp target/*.jar artifact
     - uses: actions/upload-artifact@v2
       with:
        name: Package
